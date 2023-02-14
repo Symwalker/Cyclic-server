@@ -1,10 +1,14 @@
 const productModel = require("../Models/productSchema")
 const product = {
-    addToCart : (req ,res ) =>{
+    addToCart: (req, res) => {
 
+        console.log(req);
         productModel.create(req.body, (err, data) => {
             if (err) {
-                res.send(err)
+                res.send({
+                    msg: "error",
+                    err
+                })
                 // console.log(err);
             } else {
                 res.json({
@@ -14,17 +18,18 @@ const product = {
             }
         })
     },
-    getCart : (req ,res) =>{
+    getCart: (req, res) => {
         productModel.find({}, (err, data) => {
             if (err) {
                 res.send(err)
-    
+
             } else {
-                res.json(
-                    data
-                )
+                res.json({
+                    data,
+                    msg : "get Data"
+                })
             }
-    
+
         })
     }
 }

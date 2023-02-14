@@ -10,6 +10,9 @@ const schema = mongoose.Schema({
     price :{
         type :  Number
     } 
+    amount :{
+        type :  Number
+    } 
 })
 
 
